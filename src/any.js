@@ -35,5 +35,5 @@ my.isObject = function (any) {
 
 /* Tests: qualities */
 my.isAtom = function (any) {
-  return typeof any !== "object"
+  return any === null || typeof any !== "object"
 }
