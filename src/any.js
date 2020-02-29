@@ -11,6 +11,16 @@ my.isArray = function (any) {
   return Array.isArray(any)
 }
 
+my.isArrayLike = function (any) {
+  // https://stackoverflow.com/a/55080450
+  return (
+    any
+    && typeof any[Symbol.iterator] === "function"
+    && typeof any.length === "number"
+    && typeof any !== "string"
+  )
+}
+
 my.isFunction = function (any) {
   return typeof any === "function"
 }
