@@ -7,12 +7,12 @@
 const my = exports
 
 /**
- * Applique la règle **key** ou la règle par défault `*` à **value**. Si aucune
- * des deux règles n'est disponible, retourne `undefined`.
+ * Pass _rule_ to **callback**, where _rule_ is either **key** in **rules** or
+ * `*` in **rules**. If no _rule_ is found, do nothing.
  */
-my.dispatch = function (value, key, rules) {
+my.dispatch = function (rules, key, callback) {
   const rule = rules[key] || rules["*"]
-  if (rule) return rule(value)
+  if (rule) return callback(rule)
 }
 
 /*
