@@ -16,6 +16,6 @@ my.isArrayLike = function (any) {
   )
 }
 
-my.isObject = function (any) {
-  return any !== null && typeof any === "object"
+my.isAtom = function (any) {
+  return any === null || typeof any !== "object" || any instanceof Date
 }

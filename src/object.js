@@ -5,7 +5,7 @@
  * @exports my.object
  */
 const my = module.exports
-const { isObject } = require("./any")
+const { isAtom } = require("./any")
 
 /* Creation */
 
@@ -23,7 +23,7 @@ my.wrap = function (prototype, properties) {
  */
 my.extend = function (object) {
   return my.objectMap(object, value => {
-    return isObject(value) ? Object.create(value) : value
+    return isAtom(value) ? value : Object.create(value)
   })
 }
 
@@ -55,10 +55,10 @@ my.objectMap = function (object, func) {
  */
 my.weave = function (object, properties) {
   Object.keys(properties).forEach(key => {
-    if (isObject(object[key]) && isObject(properties[key])) {
-      Object.assign(object[key], properties[key])
-    } else {
+    if (isAtom(object[key]) || isAtom(properties[key])) {
       object[key] = properties[key]
+    } else {
+      Object.assign(object[key], properties[key])
     }
   })
 }
