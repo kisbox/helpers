@@ -8,6 +8,7 @@
 const my = exports
 
 const { either } = require("./function")
+const { wrap } = require("./object")
 
 /* Introspection */
 
@@ -18,46 +19,43 @@ my.hasOwn = function (object, key) {
 /* Configuration */
 
 my.hide = function (object, key, value) {
-  my.setProperty(object, key, {
-    value,
-    enumerable: false
-  })
+  const flags = { enumerable: false }
+  if (arguments.length === 3) flags.value = value
+  my.setProperty(object, key, flags)
 }
 
 my.lock = function (object, key, value) {
-  my.setProperty(object, key, {
-    value,
-    writable: false,
-    configurable: false
-  })
+  const flags = { writable: false, configurable: false }
+  if (arguments.length === 3) flags.value = value
+  my.setProperty(object, key, flags)
 }
 
 my.hideLock = function (object, key, value) {
-  my.setProperty(object, key, {
-    value,
-    writable: false,
-    enumerable: false,
-    configurable: false
-  })
+  const flags = { writable: false, enumerable: false, configurable: false }
+  if (arguments.length === 3) flags.value = value
+  my.setProperty(object, key, flags)
 }
 
-my.setProperty = function (object, key, params) {
+my.setProperty = function (object, key, params = {}) {
   if (key in object) {
     // Property exists, `undefined` flags retains current values.
-    Object.defineProperty(object, key, {
-      value: either(params.value, object[key]),
-      writable: params.writable,
-      enumerable: params.enumerable,
-      configurable: params.configurable
-    })
+    if (!("value" in params || "set" in params || "get" in params)) {
+      params = Object.create(params)
+      params.value = object[key]
+    }
+    Object.defineProperty(object, key, params)
   } else {
     // Property doesn't exist: only unset requested flags.
-    Object.defineProperty(object, key, {
-      value: params.value,
-      writable: either(params.writable, true),
+    const flags = wrap(params, {
       enumerable: either(params.enumerable, true),
       configurable: either(params.configurable, true)
     })
+
+    if (!("get" in params || "set" in params)) {
+      flags.writable = either(params.writable, true)
+    }
+
+    Object.defineProperty(object, key, flags)
   }
 }
 
