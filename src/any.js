@@ -9,7 +9,7 @@ const my = exports
 my.isArrayLike = function (any) {
   // https://stackoverflow.com/a/55080450
   return (
-    any
+    !!any
     && typeof any[Symbol.iterator] === "function"
     && typeof any.length === "number"
     && typeof any !== "string"
