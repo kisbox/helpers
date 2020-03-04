@@ -19,3 +19,14 @@ my.isArrayLike = function (any) {
 my.isAtom = function (any) {
   return any === null || typeof any !== "object" || any instanceof Date
 }
+
+/**
+ * Returns whether **any** is the instance of a class.
+ *
+ * @param {Any} any
+ * @return {Boolean}
+ */
+my.isInstance = function (any) {
+  const proto = Object.getPrototypeOf(any)
+  return proto === any.constructor.prototype
+}
