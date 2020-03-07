@@ -18,6 +18,23 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
 
+## 1.0.0-beta.2 - 2020-03-07
+
+### Breaking
+
+- Logic: Make property.setProperty() consistent.
+- Logic: Move several `any` helpers to `@kisbox/utils.type`.
+- Logic: Replace `any.isObject()` by its opposite `any.isAtom`.
+
+### Added
+
+- Logic: Add `xeach`, `xmap` and `xassoc`.
+- Logic: Add 'any.isInstance()'.
+
+### Fixed
+
+- Logic: Fix `any.isArrayLike().
+
 ## 1.0.0-beta.1 - 2020-02-29
 
 ### Breaking
