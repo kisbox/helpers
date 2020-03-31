@@ -27,9 +27,12 @@ my.$tag = function (name = "/tag/") {
  * donné.
  *
  * @param {String} [name=memoized] - Name of the $memoizer symbol.
- * @param {Function} [generator=Object] - The computation to perform on targets.
+ * @param {Function} [generator] - The computation to perform on targets.
  */
-my.$memoizer = function (name = "/memoized/", generator = Object) {
+my.$memoizer = function (
+  name = "/memoized/",
+  generator = () => Object.create(null)
+) {
   const $tag = my.$tag(name)
 
   const accessor = function (target) {
