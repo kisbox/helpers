@@ -72,7 +72,8 @@ my.xmap = function (any, callback) {
 my.xassoc = function (any, callback) {
   const object = {}
   my.xeach(any, (value, key) => {
-    object[key] = callback(value, key)
+    const returned = callback(value, key)
+    if (returned !== undefined) object[key] = returned
   })
   return object
 }
