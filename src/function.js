@@ -63,11 +63,11 @@ my.xmap = function (any, callback) {
 }
 
 /**
- * Takes **any** object, apply **function** and returns an Object.
+ * Takes **any** object, apply **function** and returns an _Object_.
  *
  * @param {*} any
  * @param {Function} callback
- * @return {Array}
+ * @return {Object}
  **/
 my.xassoc = function (any, callback) {
   const object = {}
