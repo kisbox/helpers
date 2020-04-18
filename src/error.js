@@ -15,6 +15,7 @@ my.noThrow = function (thunk) {
     thunk()
   } catch (error) {
     console.error(error)
+    return error
   }
 }
 
