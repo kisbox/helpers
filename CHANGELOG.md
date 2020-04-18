@@ -18,6 +18,17 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
 
+## 1.0.0-beta.6 - 2020-04-18
+
+### Changed
+
+- Logic: `error.noThrow()` returns errors.
+
+### Fixed
+
+- Documentation: Fix `function.xassoc()` documentation.
+- Logic: `xassoc()` ignores `undefined` keys.
+
 ## 1.0.0-beta.4 - 2020-04-04
 
 ### Fixed
