@@ -27,6 +27,5 @@ my.isAtom = function (any) {
  * @return {Boolean}
  */
 my.isInstance = function (any) {
-  const proto = Object.getPrototypeOf(any)
-  return proto === any.constructor.prototype
+  return !(any.prototype && any.prototype.constructor === any)
 }
