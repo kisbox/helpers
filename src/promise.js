@@ -13,5 +13,5 @@ const my = exports
  * @param {Number} delay - Delay, in milliseconds.
  */
 my.timeout = function (delay) {
-  return new Promise(resolve => setTimeout(resolve, delay))
+  return new Promise((resolve) => setTimeout(resolve, delay))
 }

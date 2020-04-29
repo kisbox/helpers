@@ -39,6 +39,6 @@ my.generalize = function (constructor) {
  *
  * @todo Move it to utils?
  */
-my.call = $memoizer("/call/", constructor => {
+my.call = $memoizer("/call/", (constructor) => {
   return decontextualize(constructor.prototype)
 })

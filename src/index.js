@@ -69,7 +69,7 @@ my.import = function (helpers) {
 my.extend = function (helpers) {
   const extended = wrap(this)
 
-  Object.keys(extended).forEach(key => {
+  Object.keys(extended).forEach((key) => {
     if (isObject(extended[key])) {
       extended[key] = wrap(helpers[key])
     }

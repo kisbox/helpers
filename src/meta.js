@@ -15,10 +15,10 @@ const { hasOwn, hide } = require("./property")
 my.$tag = function (name = "/tag/") {
   const symbol = Symbol(name)
   return {
-    get: target => target[symbol],
+    get: (target) => target[symbol],
     set: (target, value) => hide(target, symbol, value),
-    isIn: target => !!target[symbol],
-    isOn: target => hasOwn(target, symbol)
+    isIn: (target) => !!target[symbol],
+    isOn: (target) => hasOwn(target, symbol)
   }
 }
 
@@ -48,14 +48,14 @@ my.$util = function (name = "/utility/", methods = {}) {
   const constructor = methods.constructor || function () {}
   // const constructor = methods.constructor ? methods.constructor :
   constructor.prototype = methods
-  return my.$memoizer(name, target => new constructor(target))
+  return my.$memoizer(name, (target) => new constructor(target))
 }
 
 /**
  * SideScope is a memoizer.
  **/
 my.$sideScope = function (name = "/sideScope/", prototype) {
-  const accessor = my.$memoizer(name, object => {
+  const accessor = my.$memoizer(name, (object) => {
     const proto = Object.getPrototypeOf(object)
     const inherited = accessor(proto)
     const returned = Object.create(inherited)

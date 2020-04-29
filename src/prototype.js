@@ -12,10 +12,10 @@ const { associate } = require("./object")
  */
 my.decontextualize = function (prototype) {
   const keys = Object.getOwnPropertyNames(prototype)
-  const methods = keys.filter(key => typeof prototype[key] === "function")
+  const methods = keys.filter((key) => typeof prototype[key] === "function")
 
   // TODO: find a more efficient way?
-  const wrapper = associate(methods, key => {
+  const wrapper = associate(methods, (key) => {
     const wrapped = prototype[key]
     // return context => {
     //   const args = Array.prototype.slice.call(arguments, 1)

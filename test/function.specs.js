@@ -49,13 +49,13 @@ addArgumentsType("foo", "bar", "baz")
 describe("my.function", () => {
   describe("xeach()", () => {
     it("applies callback to atoms, using \"atom\" as index", () => {
-      atoms.forEach(atom => {
+      atoms.forEach((atom) => {
         xeach(atom, expectVK(atom, "atom"))
       })
     })
 
     it("iterates over composites", () => {
-      composites.forEach(item => {
+      composites.forEach((item) => {
         const keys = []
         const values = []
 
@@ -72,15 +72,15 @@ describe("my.function", () => {
 
   describe("xmap()", () => {
     it("maps atoms", () => {
-      atoms.forEach(atom => {
-        const map = xmap(atom, value => `x${value}`)
+      atoms.forEach((atom) => {
+        const map = xmap(atom, (value) => `x${value}`)
         expect(map).toEqual([`x${String(atom)}`])
       })
     })
 
     it("maps composites", () => {
-      composites.forEach(item => {
-        const map = xmap(item.data, value => `x${value}`)
+      composites.forEach((item) => {
+        const map = xmap(item.data, (value) => `x${value}`)
         expect(map).toEqual(item.map)
       })
     })
@@ -88,15 +88,15 @@ describe("my.function", () => {
 
   describe("xassoc()", () => {
     it("associates atoms", () => {
-      atoms.forEach(atom => {
-        const object = xassoc(atom, value => `x${value}`)
+      atoms.forEach((atom) => {
+        const object = xassoc(atom, (value) => `x${value}`)
         expect(object).toEqual({ atom: `x${String(atom)}` })
       })
     })
 
     it("associates composites", () => {
-      composites.forEach(item => {
-        const object = xassoc(item.data, value => `x${value}`)
+      composites.forEach((item) => {
+        const object = xassoc(item.data, (value) => `x${value}`)
         expect(object).toEqual(item.assoc)
       })
     })
