@@ -12,7 +12,7 @@ const my = exports
  */
 my.noThrow = function (thunk) {
   try {
-    thunk()
+    return thunk()
   } catch (error) {
     console.error(error)
     return error
@@ -25,7 +25,7 @@ my.noThrow = function (thunk) {
  */
 my.noError = function (thunk) {
   try {
-    thunk()
+    return thunk()
   } catch (error) {
     null
   }
