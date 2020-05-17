@@ -34,7 +34,9 @@ my.either = function (value1, value2) {
  * @param {Function} callback
  **/
 my.xeach = function (any, callback) {
-  if (isAtom(any)) {
+  if (any == null) {
+    return
+  } else if (isAtom(any)) {
     callback(any, "atom")
   } else if (typeof any.forEach === "function") {
     any.forEach(callback)
