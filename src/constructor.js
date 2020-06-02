@@ -10,17 +10,6 @@ const { decontextualize } = require("./prototype")
 const { $memoizer } = require("./meta")
 
 /**
- * Commonly used properties.
- */
-my.shortcuts = function (constructor) {
-  return {
-    helpers: constructor.helpers,
-    proto: constructor.prototype,
-    safe: my.call(constructor)
-  }
-}
-
-/**
  * Transmet les méthodes décontextualisée au constructeur, et les retourne.
  * @deprecated
  */
