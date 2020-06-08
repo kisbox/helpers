@@ -20,7 +20,7 @@ my.isBrowser =
  * @member {Boolean}
  */
 my.isNode =
-  typeof process !== "undefined" && process.versions && process.versions.node
+  typeof process !== "undefined" && process.versions && !!process.versions.node
 
 /**
  * `true` if the current page is embedded (in a browser window), `false`
