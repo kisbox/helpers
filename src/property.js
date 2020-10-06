@@ -63,12 +63,14 @@ my.setProperty = function (object, key, params = {}) {
 
 /**
  * Retarde l'évaluation de la valeur de **key** au moment de la lecture.
+ * TODO: make it work on prototypes
  */
 my.delay = function (object, key, thunk) {
-  Object.setProperties(object, key, {
-    get: () => {
-      object[key] = thunk()
-      return object[key]
-    }
+  Object.defineProperty(object, key, {
+    configurable: true,
+    get: function () {
+      delete this[key]
+      return this[key] = thunk.call(this)
+    },
   })
 }
