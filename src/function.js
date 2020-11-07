@@ -16,7 +16,9 @@ const { isAtom, isArrayLike } = require("./any")
  */
 my.dispatch = function (rules, key, callback) {
   const rule = rules[key] || rules["*"]
-  if (rule) return callback(rule)
+  if (rule) {
+    return callback ? callback(rule) : rule
+  }
 }
 
 /*
