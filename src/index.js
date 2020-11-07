@@ -6,6 +6,7 @@
 Object.assign(
   exports,
   require("./any"),
+  require("./array"),
   require("./constructor"),
   require("./environment"),
   require("./error"),
