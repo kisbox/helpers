@@ -71,6 +71,6 @@ my.delay = function (object, key, thunk) {
     get: function () {
       delete this[key]
       return this[key] = thunk.call(this)
-    },
+    }
   })
 }
