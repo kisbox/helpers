@@ -18,6 +18,20 @@ Versioning](https://semver.org/spec/v2.0.0.html)**. Version syntax is
 backward-compatibility and can be updated to without risk of breakage. For major
 releases, please check this changelog before upgrading.
 
+## 1.0.0-beta.17 - 2020-11-07
+
+### Added
+
+- Logic: Add array helpers.
+
+### Changed
+
+- Logic: Makes `callback` optional in dispatch().
+
+### Fixed
+
+- Logic: Fix delay (property.js).
+
 ## 1.0.0-beta.11 - 2020-06-14
 
 ### Changed
