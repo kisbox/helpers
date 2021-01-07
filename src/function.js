@@ -52,6 +52,33 @@ my.xeach = function (any, callback) {
 }
 
 /**
+ * Call `callback(key, value)` as follow:
+ *
+ * - keach(atom, value, callback) calls callback(atom, value)
+ * - keach(array, value, callback) iterates callback(item, value)
+ * - keach(object, null, callback) iterates callback(key, value)
+ *
+ * @param {Any} keys
+ * @param {Any} value
+ * @param {Function} callback
+ **/
+my.keach = function (keys, value, callback) {
+  if (keys == null) {
+    return
+  } else if (isAtom(keys)) {
+    callback(keys, value)
+  } else if (typeof keys.forEach === "function") {
+    keys.forEach((key) => callback(key, value))
+  } else if (isArrayLike(keys)) {
+    Array.prototype.forEach.call(keys, (key) => callback(key, value))
+  } else {
+    Object.entries(keys).forEach(([key, value]) => {
+      callback(key, value)
+    })
+  }
+}
+
+/**
  * Takes **any** object, apply **function** and returns an _Array_.
  *
  * @param {*} any
