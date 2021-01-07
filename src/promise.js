@@ -15,3 +15,15 @@ const my = exports
 my.timeout = function (delay) {
   return new Promise((resolve) => setTimeout(resolve, delay))
 }
+
+/**
+ * If array contains one or more Promise, returns once each Promise is resolved.
+ * Else, returns immediately.
+ *
+ * @param {Array}
+ **/
+my.sync = function (array) {
+  if (array.find((x) => x instanceof Promise)) {
+    return Promise.allSettled(array).then(() => undefined)
+  }
+}
