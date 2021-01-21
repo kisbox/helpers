@@ -8,6 +8,7 @@ const my = module.exports
 
 const { decontextualize } = require("./prototype")
 const { $memoizer } = require("./meta")
+const { wrap } = require("./object")
 
 /**
  * Transmet les méthodes décontextualisée au constructeur, et les retourne.
@@ -27,5 +28,9 @@ my.generalize = function (constructor) {
  * call(Array).map([2, 3], x => x * 2) // => [4, 6]
  */
 my.call = $memoizer("/call/", (constructor) => {
-  return decontextualize(constructor.prototype)
+  const parent = Object.getPrototypeOf(constructor)
+  const parentCalls = parent ? my.call(parent) : null
+  const { prototype } = constructor
+  const constructorCalls = prototype && decontextualize(prototype)
+  return wrap(parentCalls, constructorCalls)
 })
