@@ -17,10 +17,6 @@ my.decontextualize = function (prototype) {
   // TODO: find a more efficient way?
   const wrapper = associate(methods, (key) => {
     const wrapped = prototype[key]
-    // return context => {
-    //   const args = Array.prototype.slice.call(arguments, 1)
-    //   return wrapped.call(context, args)
-    // }
     return function () {
       const context = Array.prototype.shift.call(arguments)
       return wrapped.apply(context, arguments)

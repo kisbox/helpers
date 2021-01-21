@@ -46,7 +46,6 @@ my.$memoizer = function (
 
 my.$util = function (name = "/utility/", methods = {}) {
   const constructor = methods.constructor || function () {}
-  // const constructor = methods.constructor ? methods.constructor :
   constructor.prototype = methods
   return my.$memoizer(name, (target) => new constructor(target))
 }
@@ -59,18 +58,11 @@ my.$sideScope = function (name = "/sideScope/", prototype) {
     const proto = Object.getPrototypeOf(object)
     const inherited = accessor(proto)
     const returned = Object.create(inherited)
-
-    // TODO: possible extension
-    //     if (typeof prototype === "function") {
-    //       Object.assign(returned, prototype(object))
-    //     }
-
     return returned
   })
 
   // Root SideScope.
   accessor.set(Object.prototype, prototype || Object.create(null))
-
   return accessor
 }
 

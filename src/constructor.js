@@ -25,8 +25,6 @@ my.generalize = function (constructor) {
  *
  * @example
  * call(Array).map([2, 3], x => x * 2) // => [4, 6]
- *
- * @todo Move it to utils?
  */
 my.call = $memoizer("/call/", (constructor) => {
   return decontextualize(constructor.prototype)
