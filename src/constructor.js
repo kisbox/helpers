@@ -21,11 +21,17 @@ my.generalize = function (constructor) {
 }
 
 /**
- * Une fonction qui retourne un SuperScope contenant les méthodes
- * dé-contextualisées du prototype d'un constructeur.
+ * Returns the decontextualized methods of a constructor.
  *
  * @example
- * call(Array).map([2, 3], x => x * 2) // => [4, 6]
+ * const { hasOwnProperty } = call(Object)
+ *
+ * const foo = { bar: 123 }
+ * hasOwnProperty(foo, "bar")        // => true
+ * hasOwnProperty(foo, "baz")        // => false
+ *
+ * @param {Constructor} constructor
+ * @return Object
  */
 my.call = $memoizer("/call/", (constructor) => {
   const parent = Object.getPrototypeOf(constructor)
