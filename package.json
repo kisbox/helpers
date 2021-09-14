@@ -1,6 +1,6 @@
 {
   "name": "@kisbox/helpers",
-  "version": "1.0.0-beta.19",
+  "version": "1.0.0-beta.21",
   "description": "Kisbox extensible helpers module",
   "author": "MisterTicot <mister.ticot@cosmic.plus>",
   "repository": "github:kisbox/helpers",
